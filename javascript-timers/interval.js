@@ -1,38 +1,15 @@
 var counter = 5;
 
 function countDown() {
-  removeElement();
+  var counterElement = document.querySelector('h1');
   counter--;
-  createElement();
+  counterElement.textContent = counter;
   if (counter === 0) {
     clearInterval(interval);
-    removeElement();
-    createFinalMessage();
+    counterElement.textContent = '~Earth Beeeelooowww Us~';
   }
 }
 
 var interval = setInterval(function () {
   countDown();
 }, 1000);
-
-function removeElement() {
-  var removeEl = document.querySelector('h1');
-  var elementContainer = removeEl.parentNode;
-  elementContainer.removeChild(removeEl);
-}
-
-function createElement() {
-  var newEl = document.createElement('h1');
-  var newElText = document.createTextNode(counter);
-  newEl.appendChild(newElText);
-  var elLocation = document.querySelector('body');
-  elLocation.appendChild(newEl);
-}
-
-function createFinalMessage() {
-  var newEl = document.createElement('h1');
-  var newElText = document.createTextNode('~Earth Beeeelooowww Us~');
-  newEl.appendChild(newElText);
-  var elLocation = document.querySelector('body');
-  elLocation.appendChild(newEl);
-}
